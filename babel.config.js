@@ -8,11 +8,11 @@ module.exports = function (api) {
         'module-resolver',
         {
           alias: {
-            // '@tailwind': ['./src/utils/tailwind.js'],
             '@screens': ['./src/screens'],
             '@components': ['./src/components'],
             '@utils': ['./src/utils'],
             '@navigation': ['./src/navigation'],
+            '@hooks': ['./src/hooks'],
             '@assets': ['./assets'],
           },
         },

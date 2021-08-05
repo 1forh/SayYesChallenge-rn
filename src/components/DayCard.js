@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function DayCard({ dayNumber }) {
+export default function DayCard({ day }) {
   return (
     <View style={styles.wrapper}>
-      <Text>Day {dayNumber}</Text>
+      <Text>Day {day?.index}</Text>
 
       <View>
         <Text>Upload an image</Text>
@@ -20,7 +20,7 @@ export default function DayCard({ dayNumber }) {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#cec', // todo update this
-    borderRadius: 20,
+    borderRadius: 8,
     padding: 20,
     flex: 1,
   },
