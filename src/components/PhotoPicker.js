@@ -25,8 +25,6 @@ export default function PhotoPicker({ pick, photo }) {
       quality: 1,
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       setImage(result.uri);
       pick(result.uri);
@@ -36,7 +34,7 @@ export default function PhotoPicker({ pick, photo }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button title='Pick an image from camera roll' onPress={pickImage} />
-      {image && (
+      {image !== '' && (
         <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
       )}
     </View>

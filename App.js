@@ -1,6 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import PagerView from 'react-native-pager-view';
 import DayCard from '@components/DayCard';
@@ -9,7 +15,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const STORAGE_KEY_DAYS = '@thirtydaysofnew.days';
 
-const generateInitialDays = (count = 1) => {
+const generateInitialDays = (count = 30) => {
   const initialDays = [];
   for (let index = 1; index <= count; index++) {
     initialDays.push({
@@ -40,6 +46,10 @@ export default function App() {
     }
   };
 
+  const resetStorage = async () => {
+    await AsyncStorage.removeItem(STORAGE_KEY_DAYS);
+  };
+
   const onUpdateDay = async (day) => {
     const updatedDays = days.map((d) => {
       if (d.index === day.index) {
@@ -60,18 +70,25 @@ export default function App() {
     fetchDaysData();
   }, []);
 
+  console.log(days);
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <Container>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {days &&
-            days.map((day, index) => (
-              <View key={index} style={{ marginBottom: 12 }}>
-                <DayCard day={day} updateDay={onUpdateDay} />
-              </View>
-            ))}
+          {days.map((day, index) => (
+            <View key={index} style={{ marginBottom: 12 }}>
+              <DayCard day={day} updateDay={onUpdateDay} />
+            </View>
+          ))}
         </ScrollView>
       </Container>
+
+      {/* <View> */}
+      {/* <TouchableOpacity onPress={resetStorage}>
+          <Text>Reset</Text>
+        </TouchableOpacity> */}
+      {/* </View> */}
 
       <StatusBar style='auto' />
     </SafeAreaView>
