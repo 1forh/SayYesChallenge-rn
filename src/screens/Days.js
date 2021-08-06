@@ -12,12 +12,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDays } from '@hooks/useDays';
 
 export default function Days() {
-  const { days, updateDay, resetDays } = useDays();
+  const { dayStarted, days, updateDay, resetDays } = useDays();
 
   return (
     <SafeAreaView style={styles.wrapper} edges={['right', 'top', 'left']}>
       <Container>
         <ScrollView showsVerticalScrollIndicator={false}>
+          <View>
+            <Text>Day started: {dayStarted}</Text>
+          </View>
           {typeof days === 'object' &&
             days.map((day, index) => (
               <View key={index} style={{ marginBottom: 12 }}>
@@ -38,6 +41,7 @@ export default function Days() {
 
 const styles = StyleSheet.create({
   wrapper: {
+    marginTop: 16,
     flex: 1,
   },
   pagerView: {

@@ -16,21 +16,24 @@ export default function TabNav() {
   return (
     <Tab.Navigator
       initialRouteName='Days'
+      screenOptions={{
+        headerShown: false,
+      }}
       // screenOptions={({ route }) => ({
-      // cardStyle: { backgroundColor: '#EBDDD3' },
-      // tabBarIcon: ({ color, size }) => {
-      //   if (route.name === 'Statistics') {
-      //     return (
-      //       <FontAwesomeIcon icon={faChartBar} color={color} size={size} />
-      //     );
-      //   } else if (route.name === 'Timer') {
-      //     return <FontAwesomeIcon icon={faClock} color={color} size={size} />;
-      //   } else if (route.name === 'Settings') {
-      //     return <FontAwesomeIcon icon={faCog} color={color} size={size} />;
-      //   } else if (route.name === 'Home') {
-      //     return <FontAwesomeIcon icon={faHome} color={color} size={size} />;
-      //   }
-      // },
+      //   cardStyle: { backgroundColor: '#EBDDD3' },
+      //   tabBarIcon: ({ color, size }) => {
+      //     // if (route.name === 'Statistics') {
+      //     //   return (
+      //     //     <FontAwesomeIcon icon={faChartBar} color={color} size={size} />
+      //     //   );
+      //     // } else if (route.name === 'Timer') {
+      //     //   return <FontAwesomeIcon icon={faClock} color={color} size={size} />;
+      //     // } else if (route.name === 'Settings') {
+      //     //   return <FontAwesomeIcon icon={faCog} color={color} size={size} />;
+      //     // } else if (route.name === 'Home') {
+      //     //   return <FontAwesomeIcon icon={faHome} color={color} size={size} />;
+      //     // }
+      //   },
       // })}
       // tabBarOptions={{
       //   activeTintColor: '#403C3C',

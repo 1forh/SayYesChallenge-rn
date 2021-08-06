@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const STORAGE_KEY_DAYS = '@thirtydaysofnew.days';
 
-const generateInitialDays = (count = 30) => {
+const generateInitialDays = (count = 1) => {
   const initialDays = [];
   for (let index = 1; index <= count; index++) {
     initialDays.push({
@@ -24,6 +24,17 @@ const DaysContext = createContext(null);
 
 export const DaysProvider = (props) => {
   const [days, setDays] = useState([]);
+  const [dayStarted, setDayStarted] = useState('XX');
+
+  const fetchInitialDaysData = () => {
+    (async function () {
+      let days = await fetchDaysFromDB();
+      if (!days) {
+        days = generateInitialDays(); // todo: probably needs to be better
+      }
+      setDays(days);
+    })();
+  };
 
   const resetDays = async () => {
     await AsyncStorage.removeItem(STORAGE_KEY_DAYS);
@@ -39,22 +50,15 @@ export const DaysProvider = (props) => {
     });
     await AsyncStorage.setItem(STORAGE_KEY_DAYS, JSON.stringify(updatedDays));
     setDays(updatedDays);
+    setDayStarted(new Date().toString());
   };
 
   useEffect(() => {
-    (async function () {
-      let days = await fetchDaysFromDB();
-
-      if (!days) {
-        days = generateInitialDays(); // todo: probably needs to be better
-      }
-
-      setDays(days);
-    })();
+    fetchInitialDaysData();
   }, []);
 
   return (
-    <DaysContext.Provider value={{ days, resetDays, updateDay }}>
+    <DaysContext.Provider value={{ days, resetDays, updateDay, dayStarted }}>
       {props.children}
     </DaysContext.Provider>
   );

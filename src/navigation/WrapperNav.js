@@ -25,11 +25,9 @@ export default function WrapperNav() {
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator
         initialRouteName='TabNav'
-        // screenOptions={
-        // {
-        // cardStyle: { backgroundColor: '#EBDDD3' },
-        // }
-        // }
+        screenOptions={{
+          headerShown: false,
+        }}
       >
         <Stack.Screen
           name='WalkThrough'
