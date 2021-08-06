@@ -9,7 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const STORAGE_KEY_DAYS = '@thirtydaysofnew.days';
 
-const generateInitialDays = (count = 30) => {
+const generateInitialDays = (count = 1) => {
   const initialDays = [];
   for (let index = 1; index <= count; index++) {
     initialDays.push({
@@ -25,19 +25,32 @@ export default function App() {
   const [days, setDays] = useState([]);
 
   const saveDaysData = async (days) => {
-    console.log('💾 Saving days data...');
-    await AsyncStorage.setItem(STORAGE_KEY_DAYS, days);
+    console.log('💾 Saving days data...', days);
+    await AsyncStorage.setItem(STORAGE_KEY_DAYS, JSON.stringify(days));
   };
 
   const fetchDaysData = async () => {
-    try {
-      const daysFromStorage = await AsyncStorage.getItem(STORAGE_KEY_DAYS);
+    let daysFromStorage = await AsyncStorage.getItem(STORAGE_KEY_DAYS);
 
-      if (daysFromStorage) {
-        setDays(daysFromStorage);
+    if (daysFromStorage) {
+      daysFromStorage = JSON.parse(daysFromStorage);
+      setDays(daysFromStorage);
+    } else {
+      setDays(generateInitialDays());
+    }
+  };
+
+  const onUpdateDay = async (day) => {
+    const updatedDays = days.map((d) => {
+      if (d.index === day.index) {
+        return day;
       } else {
-        setDays(generateInitialDays());
+        return d;
       }
+    });
+    try {
+      await saveDaysData(updatedDays);
+      setDays(updatedDays);
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +67,7 @@ export default function App() {
           {days &&
             days.map((day, index) => (
               <View key={index} style={{ marginBottom: 12 }}>
-                <DayCard day={day} />
+                <DayCard day={day} updateDay={onUpdateDay} />
               </View>
             ))}
         </ScrollView>
