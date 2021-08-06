@@ -15,6 +15,8 @@ export default function DayForm({ day, submit }) {
 
   const onSubmit = () => {
     if (typeof submit === 'function') {
+      if (!image || !title) return;
+
       const details = {
         index: day.index,
         image,
