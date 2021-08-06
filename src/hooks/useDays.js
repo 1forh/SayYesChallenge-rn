@@ -12,7 +12,6 @@ const generateInitialDays = (count = 30) => {
       description: '',
     });
   }
-  console.log(initialDays);
   return initialDays;
 };
 
@@ -31,14 +30,23 @@ export const DaysProvider = (props) => {
     setDays(generateInitialDays());
   };
 
+  const updateDay = async (day) => {
+    const updatedDays = days.map((d) => {
+      if (d.index === day.index) {
+        return day;
+      }
+      return d;
+    });
+    await AsyncStorage.setItem(STORAGE_KEY_DAYS, JSON.stringify(updatedDays));
+    setDays(updatedDays);
+  };
+
   useEffect(() => {
     (async function () {
       let days = await fetchDaysFromDB();
 
-      console.log(setDays);
-
       if (!days) {
-        days = generateInitialDays();
+        days = generateInitialDays(); // todo: probably needs to be better
       }
 
       setDays(days);
@@ -46,7 +54,7 @@ export const DaysProvider = (props) => {
   }, []);
 
   return (
-    <DaysContext.Provider value={{ days, setDays, resetDays }}>
+    <DaysContext.Provider value={{ days, resetDays, updateDay }}>
       {props.children}
     </DaysContext.Provider>
   );
