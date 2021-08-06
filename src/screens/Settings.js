@@ -19,7 +19,7 @@ import * as Linking from 'expo-linking';
 const SettingsLinkGroup = ({ children, style }) => {
   return (
     <View style={style}>
-      <View style={tailwind('bg-gray-800 rounded-lg')}>{children}</View>
+      <View>{children}</View>
     </View>
   );
 };

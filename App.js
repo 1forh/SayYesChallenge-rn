@@ -1,15 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import WrapperNav from '@navigation/WrapperNav';
-import { DaysProvider, fetchDaysFromDB } from '@hooks/useDays';
+import { DaysProvider } from '@hooks/useDays';
 
-export default async function App() {
-  const days = await fetchDaysFromDB();
-
+export default function App() {
   return (
-    <View>
-      <DaysProvider days={days}>
+    <View style={{ flexGrow: 1 }}>
+      <DaysProvider>
         <WrapperNav />
         <StatusBar style='auto' />
       </DaysProvider>

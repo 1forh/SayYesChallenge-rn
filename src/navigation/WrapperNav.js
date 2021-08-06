@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNav from '@navigation/TabNav';
-import WalkThrough from '@components/WalkThrough';
+import WalkThrough from '@screens/WalkThrough';
 
 const Stack = createStackNavigator();
 
@@ -11,7 +11,7 @@ export default function WrapperNav() {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background: '#EBDDD3',
+      // background: '#EBDDD3',
     },
   };
 
@@ -25,9 +25,11 @@ export default function WrapperNav() {
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator
         initialRouteName='TabNav'
-        screenOptions={{
-          cardStyle: { backgroundColor: '#EBDDD3' },
-        }}
+        // screenOptions={
+        // {
+        // cardStyle: { backgroundColor: '#EBDDD3' },
+        // }
+        // }
       >
         <Stack.Screen
           name='WalkThrough'
