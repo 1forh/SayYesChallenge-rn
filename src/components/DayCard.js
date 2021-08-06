@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import DayForm from '@components/DayForm';
 import DayDetail from '@components/DayDetail';
-import { gray } from '@utils/colors';
+import { gray, primary } from '@utils/colors';
 
 export default function DayCard({ day, updateDay }) {
   const [editing, setEditing] = useState(false);
@@ -36,10 +36,12 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: gray[700],
+    color: '#EFCAA4',
   },
   wrapper: {
-    backgroundColor: '#cec', // todo update this
+    backgroundColor: '#393C40',
+    borderColor: '#EFCAA4',
+    borderWidth: 1,
     borderRadius: 8,
     padding: 20,
     flex: 1,

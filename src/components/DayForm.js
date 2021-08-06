@@ -36,9 +36,9 @@ export default function DayForm({ day, submit }) {
   };
 
   return (
-    <View>
+    <View style={styles.wrapper}>
       <PhotoPicker pick={setImage} photo={image} />
-
+      {/* 
       <View>
         <Text>Add Title</Text>
         <TextInput style={styles.input} onChangeText={setTitle} value={title} />
@@ -52,11 +52,11 @@ export default function DayForm({ day, submit }) {
           value={description}
           multiline
         />
-      </View>
+      </View> */}
 
       <View>
         <TouchableOpacity onPress={onSubmit} style={styles.button}>
-          <Text>Submit</Text>
+          <Text style={styles.buttonText}>Save</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -64,6 +64,9 @@ export default function DayForm({ day, submit }) {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    alignItems: 'center',
+  },
   input: {
     height: 40,
     borderWidth: 1,
@@ -76,8 +79,14 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
-    borderWidth: 1,
     padding: 10,
-    textAlign: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+    backgroundColor: '#EFCAA4',
+  },
+  buttonText: {
+    paddingHorizontal: 20,
+    fontSize: 16,
+    fontWeight: '600',
   },
 });

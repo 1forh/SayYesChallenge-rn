@@ -24,7 +24,6 @@ const DaysContext = createContext(null);
 
 export const DaysProvider = (props) => {
   const [days, setDays] = useState([]);
-  const [dayStarted, setDayStarted] = useState('XX');
 
   const fetchInitialDaysData = () => {
     (async function () {
@@ -50,7 +49,6 @@ export const DaysProvider = (props) => {
     });
     await AsyncStorage.setItem(STORAGE_KEY_DAYS, JSON.stringify(updatedDays));
     setDays(updatedDays);
-    setDayStarted(new Date().toString());
   };
 
   useEffect(() => {
@@ -58,7 +56,7 @@ export const DaysProvider = (props) => {
   }, []);
 
   return (
-    <DaysContext.Provider value={{ days, resetDays, updateDay, dayStarted }}>
+    <DaysContext.Provider value={{ days, resetDays, updateDay }}>
       {props.children}
     </DaysContext.Provider>
   );

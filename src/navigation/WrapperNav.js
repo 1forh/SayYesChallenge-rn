@@ -3,6 +3,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNav from '@navigation/TabNav';
 import WalkThrough from '@screens/WalkThrough';
+import { gray } from '@utils/colors';
 
 const Stack = createStackNavigator();
 
@@ -11,7 +12,7 @@ export default function WrapperNav() {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      // background: '#EBDDD3',
+      background: '#1C2125',
     },
   };
 

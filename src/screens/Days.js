@@ -12,14 +12,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDays } from '@hooks/useDays';
 
 export default function Days() {
-  const { dayStarted, days, updateDay, resetDays } = useDays();
+  const { days, updateDay, resetDays } = useDays();
 
   return (
     <SafeAreaView style={styles.wrapper} edges={['right', 'top', 'left']}>
       <Container>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View>
-            <Text>Day started: {dayStarted}</Text>
+            <Text>Day started: Placeholder</Text>
           </View>
           {typeof days === 'object' &&
             days.map((day, index) => (
