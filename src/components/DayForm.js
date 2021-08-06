@@ -15,14 +15,21 @@ export default function DayForm({ day, submit }) {
 
   const onSubmit = () => {
     if (typeof submit === 'function') {
-      console.log('details', title, description, image);
-
-      submit({
+      const details = {
         index: day.index,
         image,
         title,
         description,
-      });
+      };
+
+      // * is updating day
+      if (day.title) {
+        details.edited = new Date().toString();
+      } else {
+        details.created = new Date().toString();
+      }
+
+      submit(details);
     }
   };
 

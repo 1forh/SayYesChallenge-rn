@@ -31,7 +31,7 @@ export default function App() {
   const [days, setDays] = useState([]);
 
   const saveDaysData = async (days) => {
-    console.log('💾 Saving days data...', days);
+    console.log('💾 Saving days data');
     await AsyncStorage.setItem(STORAGE_KEY_DAYS, JSON.stringify(days));
   };
 
@@ -73,7 +73,7 @@ export default function App() {
   console.log(days);
 
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <SafeAreaView style={styles.wrapper} edges={['right', 'top', 'left']}>
       <Container>
         <ScrollView showsVerticalScrollIndicator={false}>
           {days.map((day, index) => (
@@ -81,14 +81,14 @@ export default function App() {
               <DayCard day={day} updateDay={onUpdateDay} />
             </View>
           ))}
+
+          <View>
+            <TouchableOpacity onPress={resetStorage}>
+              <Text>Reset</Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </Container>
-
-      {/* <View> */}
-      {/* <TouchableOpacity onPress={resetStorage}>
-          <Text>Reset</Text>
-        </TouchableOpacity> */}
-      {/* </View> */}
 
       <StatusBar style='auto' />
     </SafeAreaView>
