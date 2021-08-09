@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Container from '@components/Container';
+import PageHeader from '@components/PageHeader';
+import PageWrapper from '@components/PageWrapper';
 // import ScreenHeading from '@components/ScreenHeading';
 // import {
 //   ChevronRightIcon,
@@ -64,12 +66,13 @@ export default function Settings({ navigation }) {
   };
 
   return (
-    <SafeAreaView>
+    <PageWrapper>
       <Container>
-        {/* <ScreenHeading>Settings</ScreenHeading> */}
+        <PageHeader title='Settings' goBack={() => navigation.goBack()} />
+
         <SettingsLinkGroup>
           <SettingsLink
-            text={'Rate BrushMore'}
+            text={'Rate 30 Days of New'}
             // iconBgColorClass={'bg-pink-600'}
             // icon={faStar}
             last={true}
@@ -77,6 +80,6 @@ export default function Settings({ navigation }) {
           />
         </SettingsLinkGroup>
       </Container>
-    </SafeAreaView>
+    </PageWrapper>
   );
 }

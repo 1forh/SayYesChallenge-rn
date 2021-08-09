@@ -1,15 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import Container from '@components/Container';
+import PageWrapper from '@components/PageWrapper';
+import PageHeader from '@components/PageHeader';
 
-export default function Suggestions() {
+export default function Suggestions({ navigation }) {
   return (
-    <SafeAreaView>
+    <PageWrapper>
       <Container>
-        <Text>Suggestions</Text>
+        <PageHeader
+          title='Need a suggestion?'
+          goBack={() => navigation.goBack()}
+        />
       </Container>
-    </SafeAreaView>
+    </PageWrapper>
   );
 }
 

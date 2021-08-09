@@ -1,12 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-export default function PageHeader({ goToSettings, title }) {
-  return (
-    <View style={styles.wrapper}>
-      <Text style={styles.title}>{title}</Text>
+export default function PageHeader({ goToSettings, goBack, title }) {
+  const GoBackButton = () => {
+    return (
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={goBack}
+        activeOpacity={0.75}
+      >
+        <FontAwesomeIcon icon={faChevronLeft} color='#fff' size={18} />
+      </TouchableOpacity>
+    );
+  };
+
+  const GoToSettingsButton = () => {
+    return (
       <TouchableOpacity
         style={styles.button}
         onPress={goToSettings}
@@ -14,6 +25,17 @@ export default function PageHeader({ goToSettings, title }) {
       >
         <FontAwesomeIcon icon={faCog} color='#fff' size={24} />
       </TouchableOpacity>
+    );
+  };
+
+  return (
+    <View style={styles.wrapper}>
+      <View style={styles.titleWrapper}>
+        {typeof goBack === 'function' && <GoBackButton />}
+        <Text style={styles.title}>{title}</Text>
+      </View>
+
+      {typeof goToSettings === 'function' && <GoToSettingsButton />}
     </View>
   );
 }
@@ -24,10 +46,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
   },
+  titleWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   title: {
     fontFamily: 'Poppins_600SemiBold',
     color: '#fff',
     fontSize: 20,
+  },
+  backButton: {
+    marginRight: 8,
   },
   button: {},
 });

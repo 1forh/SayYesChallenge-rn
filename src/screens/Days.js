@@ -8,15 +8,15 @@ import {
 } from 'react-native';
 import DayCard from '@components/DayCard';
 import Container from '@components/Container';
+import PageWrapper from '@components/PageWrapper';
 import PageHeader from '@components/PageHeader';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDays } from '@hooks/useDays';
 
 export default function Days({ navigation }) {
   const { days, updateDay, resetDays } = useDays();
 
   return (
-    <SafeAreaView style={styles.wrapper} edges={['right', 'top', 'left']}>
+    <PageWrapper>
       <Container>
         <PageHeader
           title='Days'
@@ -45,15 +45,11 @@ export default function Days({ navigation }) {
           </View> */}
         </ScrollView>
       </Container>
-    </SafeAreaView>
+    </PageWrapper>
   );
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    marginTop: 16,
-    flex: 1,
-  },
   pagerView: {
     width: '100%',
     flex: 1,
