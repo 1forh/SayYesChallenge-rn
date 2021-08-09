@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Container from '@components/Container';
 // import ScreenHeading from '@components/ScreenHeading';
 // import {
@@ -39,7 +40,7 @@ const SettingsLink = ({
         </View>
 
         <View>
-          <Text>{text}</Text>
+          <Text style={{ color: '#fff' }}>{text}</Text>
           <View>{/* <ChevronRightIcon color={gray[500]} size={30} /> */}</View>
         </View>
       </View>

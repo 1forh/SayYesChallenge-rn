@@ -15,7 +15,7 @@ export default function DayForm({ day, submit }) {
 
   const onSubmit = () => {
     if (typeof submit === 'function') {
-      if (!image || !title) return;
+      if (!image) return;
 
       const details = {
         index: day.index,
@@ -37,9 +37,11 @@ export default function DayForm({ day, submit }) {
 
   return (
     <View style={styles.wrapper}>
-      <PhotoPicker pick={setImage} photo={image} />
-      {/* 
-      <View>
+      <View style={styles.picker}>
+        <PhotoPicker pick={setImage} photo={image} />
+      </View>
+
+      {/* <View>
         <Text>Add Title</Text>
         <TextInput style={styles.input} onChangeText={setTitle} value={title} />
       </View>
@@ -67,6 +69,9 @@ const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
   },
+  picker: {
+    // marginBottom: 48,
+  },
   input: {
     height: 40,
     borderWidth: 1,
@@ -78,7 +83,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-    marginTop: 20,
+    // marginTop: 20,
     padding: 10,
     alignItems: 'center',
     borderRadius: 20,

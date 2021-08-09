@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import TabNav from '@navigation/TabNav';
+// import TabNav from '@navigation/TabNav';
 import WalkThrough from '@screens/WalkThrough';
+import Days from '@screens/Days';
+import Suggestions from '@screens/Suggestions';
+import Settings from '@screens/Settings';
 import { gray } from '@utils/colors';
 
 const Stack = createStackNavigator();
@@ -12,7 +15,7 @@ export default function WrapperNav() {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background: '#1C2125',
+      background: gray[800],
     },
   };
 
@@ -25,27 +28,15 @@ export default function WrapperNav() {
   return (
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator
-        initialRouteName='TabNav'
+        initialRouteName='Days'
         screenOptions={{
           headerShown: false,
         }}
       >
-        <Stack.Screen
-          name='WalkThrough'
-          component={WalkThrough}
-          options={{
-            headerShown: false,
-            cardStyleInterpolator: forFade,
-          }}
-        />
-        <Stack.Screen
-          name='TabNav'
-          component={TabNav}
-          options={{
-            headerShown: false,
-            cardStyleInterpolator: forFade,
-          }}
-        />
+        <Stack.Screen name='Days' component={Days} />
+        <Stack.Screen name='Suggestions' component={Suggestions} />
+        <Stack.Screen name='WalkThrough' component={WalkThrough} />
+        <Stack.Screen name='Settings' component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
   );

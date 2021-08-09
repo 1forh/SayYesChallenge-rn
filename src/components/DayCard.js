@@ -1,55 +1,74 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import DayForm from '@components/DayForm';
-import DayDetail from '@components/DayDetail';
-import { gray, primary } from '@utils/colors';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import DayCardHeader from '@components/DayCardHeader';
+import PhotoPicker from '@components/PhotoPicker';
+import SuggestionsLink from '@components/SuggestionsLink';
+import { black } from '@utils/colors';
+import { LinearGradient } from 'expo-linear-gradient';
 
-export default function DayCard({ day, updateDay }) {
-  const [editing, setEditing] = useState(false);
-
-  const onDayFormSubmit = (payload) => {
-    updateDay(payload);
-    setEditing(false);
-  };
+export default function DayCard({ goToSuggestions }) {
+  const [image, setImage] = useState();
 
   return (
     <View style={styles.wrapper}>
-      <Text style={styles.title}>Day {day?.index}</Text>
-
-      {day?.title && !editing ? (
-        <View>
-          <DayDetail day={day} />
-          <TouchableOpacity onPress={setEditing} style={styles.button}>
-            <Text>Edit</Text>
-          </TouchableOpacity>
+      <DayCardHeader day='1' date={new Date()} />
+      {image ? (
+        <View style={styles.imageWrapper}>
+          <LinearGradient
+            // Background Linear Gradient
+            colors={['rgba(0,0,0,0.8)', 'transparent']}
+            style={styles.imageGradient}
+          />
+          <Image source={{ uri: image }} style={styles.image} />
         </View>
       ) : (
-        <DayForm day={day} submit={onDayFormSubmit} />
+        <View style={styles.content}>
+          <PhotoPicker pick={setImage} photo={image} />
+
+          {typeof goToSuggestions === 'function' && (
+            <SuggestionsLink goToSuggestions={goToSuggestions} />
+          )}
+        </View>
       )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  title: {
-    marginBottom: 16,
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#EFCAA4',
-  },
   wrapper: {
-    backgroundColor: '#393C40',
-    borderColor: '#EFCAA4',
-    borderWidth: 1,
+    backgroundColor: black,
     borderRadius: 8,
     padding: 20,
-    flex: 1,
+    height: 310,
+    overflow: 'hidden',
   },
-  button: {
-    marginTop: 20,
-    borderWidth: 1,
-    padding: 10,
-    textAlign: 'center',
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  imageWrapper: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    zIndex: -1,
+  },
+  image: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    zIndex: 0,
+  },
+  imageGradient: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    zIndex: 1,
   },
 });

@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Platform } from 'react-native';
+import {
+  Image,
+  View,
+  Platform,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
 
 export default function PhotoPicker({ pick, photo }) {
   const [image, setImage] = useState(photo);
@@ -32,11 +41,27 @@ export default function PhotoPicker({ pick, photo }) {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button title='Pick an image from camera roll' onPress={pickImage} />
-      {image !== '' && (
-        <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
-      )}
+    <View style={styles.wrapper}>
+      <TouchableOpacity style={styles.button} onPress={pickImage}>
+        <FontAwesomeIcon icon={faImage} color='#fff' size={52} />
+        <Text style={styles.buttonText}>Upload photo</Text>
+      </TouchableOpacity>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    borderColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    marginTop: 6,
+    color: '#fff',
+    fontFamily: 'Poppins_400Regular',
+    fontSize: 17,
+  },
+});
