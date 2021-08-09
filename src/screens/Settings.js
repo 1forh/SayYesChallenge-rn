@@ -4,17 +4,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Container from '@components/Container';
 import PageHeader from '@components/PageHeader';
 import PageWrapper from '@components/PageWrapper';
-// import ScreenHeading from '@components/ScreenHeading';
-// import {
-//   ChevronRightIcon,
-//   StarIcon,
-//   LockClosedIcon,
-//   GlobeIcon,
-//   QuestionMarkCircleIcon,
-// } from 'react-native-heroicons/solid';
+import { useDays } from '@hooks/useDays';
 
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-// import { faStar } from '@fortawesome/free-solid-svg-icons';
+// import ScreenHeading from '@components/ScreenHeading';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 // import { LogoutIcon } from 'react-native-heroicons/outline';
 import * as Linking from 'expo-linking';
@@ -51,6 +46,8 @@ const SettingsLink = ({
 };
 
 export default function Settings({ navigation }) {
+  const { resetDays } = useDays();
+
   const requestReview = () => {
     Linking.openURL(
       `itms-apps://itunes.apple.com/app/viewContentsUserReviews/id${1570186525}?action=write-review`
@@ -65,10 +62,25 @@ export default function Settings({ navigation }) {
     Linking.openURL(`https://www.tallylog.com/support`);
   };
 
+  const clearData = () => {
+    resetDays();
+    console.log('clearData');
+  };
+
   return (
     <PageWrapper>
       <Container>
         <PageHeader title='Settings' goBack={() => navigation.goBack()} />
+
+        <SettingsLinkGroup>
+          <SettingsLink
+            text={'Default number of days'}
+            // iconBgColorClass={'bg-pink-600'}
+            // icon={faStar}
+            last={true}
+            onPress={resetDays}
+          />
+        </SettingsLinkGroup>
 
         <SettingsLinkGroup>
           <SettingsLink
@@ -77,6 +89,16 @@ export default function Settings({ navigation }) {
             // icon={faStar}
             last={true}
             onPress={requestReview}
+          />
+        </SettingsLinkGroup>
+
+        <SettingsLinkGroup>
+          <SettingsLink
+            text={'Clear data'}
+            // iconBgColorClass={'bg-pink-600'}
+            // icon={faStar}
+            last={true}
+            onPress={clearData}
           />
         </SettingsLinkGroup>
       </Container>

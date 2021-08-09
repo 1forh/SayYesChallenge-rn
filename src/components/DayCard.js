@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import DayCardHeader from '@components/DayCardHeader';
 import PhotoPicker from '@components/PhotoPicker';
@@ -6,12 +6,19 @@ import SuggestionsLink from '@components/SuggestionsLink';
 import { black } from '@utils/colors';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function DayCard({ goToSuggestions }) {
-  const [image, setImage] = useState();
+export default function DayCard({ goToSuggestions, updateDay, day }) {
+  const [image, setImage] = useState(day?.image);
+
+  useEffect(() => {
+    if (!image) return;
+
+    console.log('updating day');
+    updateDay({ ...day, image });
+  }, [image]);
 
   return (
     <View style={styles.wrapper}>
-      <DayCardHeader day='1' date={new Date()} />
+      <DayCardHeader day={day?.index} date={day?.date} />
       {image ? (
         <View style={styles.imageWrapper}>
           <LinearGradient

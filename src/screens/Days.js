@@ -13,7 +13,7 @@ import PageHeader from '@components/PageHeader';
 import { useDays } from '@hooks/useDays';
 
 export default function Days({ navigation }) {
-  const { days, updateDay, resetDays } = useDays();
+  const { days, updateDay } = useDays();
 
   return (
     <PageWrapper>
@@ -23,25 +23,19 @@ export default function Days({ navigation }) {
           goToSettings={() => navigation.navigate('Settings')}
         />
         <ScrollView showsVerticalScrollIndicator={false}>
+          {typeof days?.data === 'object' &&
+            days?.data.map((day, index) => (
+              <View key={index} style={{ marginBottom: 12 }}>
+                <DayCard
+                  day={day}
+                  updateDay={updateDay}
+                  goToSuggestions={() => navigation.navigate('Suggestions')}
+                />
+              </View>
+            ))}
+
           {/* <View>
             <Text>Day started: Placeholder</Text>
-          </View> */}
-          <View style={{ marginBottom: 12 }}>
-            <DayCard
-              goToSuggestions={() => navigation.navigate('Suggestions')}
-            />
-          </View>
-
-          {/* {typeof days === 'object' &&
-            days.map((day, index) => (
-              <View key={index} style={{ marginBottom: 12 }}>
-                <DayCard day={day} updateDay={updateDay} />
-              </View>
-            ))} */}
-          {/* <View>
-            <TouchableOpacity onPress={resetDays}>
-              <Text>Reset</Text>
-            </TouchableOpacity>
           </View> */}
         </ScrollView>
       </Container>

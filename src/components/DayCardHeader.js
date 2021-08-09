@@ -2,8 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { format } from 'date-fns';
 
+function formatDate(d) {
+  if (!d) return;
+  return format(new Date(d), 'MMMM d');
+}
+
 export default function DayCardHeader({ day, date }) {
-  const formattedDate = format(date, 'MMMM d');
+  const formattedDate = formatDate(date);
 
   return (
     <View style={styles.wrapper}>
