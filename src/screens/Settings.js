@@ -1,52 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text, View, TouchableOpacity, Alert } from 'react-native';
 import Container from '@components/Container';
 import PageHeader from '@components/PageHeader';
 import PageWrapper from '@components/PageWrapper';
+import SettingsLinkGroup from '@components/SettingsLinkGroup';
+import SettingsLink from '@components/SettingsLink';
 import { useDays } from '@hooks/useDays';
+import { config } from '@utils/config';
+import {
+  faStar,
+  faTrash,
+  faDownload,
+  faCalendar,
+} from '@fortawesome/free-solid-svg-icons';
+import { gray } from '@utils/colors';
 
-// import ScreenHeading from '@components/ScreenHeading';
-
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-
-// import { LogoutIcon } from 'react-native-heroicons/outline';
 import * as Linking from 'expo-linking';
 
-const SettingsLinkGroup = ({ children, style }) => {
-  return (
-    <View style={style}>
-      <View>{children}</View>
-    </View>
-  );
-};
-
-const SettingsLink = ({
-  last = false,
-  onPress,
-  icon,
-  text,
-  iconBgColorClass = 'bg-gray-900',
-}) => {
-  return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.75}>
-      <View>
-        <View>
-          {/* {icon && <FontAwesomeIcon color='#fff' icon={icon} />} */}
-        </View>
-
-        <View>
-          <Text style={{ color: '#fff' }}>{text}</Text>
-          <View>{/* <ChevronRightIcon color={gray[500]} size={30} /> */}</View>
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
-};
-
 export default function Settings({ navigation }) {
-  const { resetDays } = useDays();
+  const { resetDays, exportDaysData } = useDays();
+
+  const twoButtonAlert = () =>
+    Alert.alert(
+      'Clear all data?',
+      'Are you sure you want to clear all data?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => clearData(),
+          style: 'cancel',
+        },
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
+      ],
+      { cancelable: false }
+    );
 
   const requestReview = () => {
     Linking.openURL(
@@ -67,38 +54,49 @@ export default function Settings({ navigation }) {
     console.log('clearData');
   };
 
+  const exportData = () => {
+    exportDaysData();
+    console.log('exportData');
+  };
+
   return (
     <PageWrapper>
       <Container>
         <PageHeader title='Settings' goBack={() => navigation.goBack()} />
 
-        <SettingsLinkGroup>
+        {/* <SettingsLinkGroup>
           <SettingsLink
-            text={'Default number of days'}
-            // iconBgColorClass={'bg-pink-600'}
-            // icon={faStar}
+            text={'Number of days'}
+            iconBgColor={'#71717A'}
+            icon={faCalendar}
             last={true}
             onPress={resetDays}
           />
-        </SettingsLinkGroup>
+        </SettingsLinkGroup> */}
 
         <SettingsLinkGroup>
           <SettingsLink
-            text={'Rate 30 Days of New'}
-            // iconBgColorClass={'bg-pink-600'}
-            // icon={faStar}
+            text={`Rate ${config.name}`}
+            iconBgColor={'#EC4899'}
+            icon={faStar}
             last={true}
             onPress={requestReview}
           />
         </SettingsLinkGroup>
 
         <SettingsLinkGroup>
+          {/* <SettingsLink
+            text={'Export data'}
+            iconBgColor={'#9333EA'}
+            icon={faDownload}
+            onPress={exportData}
+          /> */}
           <SettingsLink
             text={'Clear data'}
-            // iconBgColorClass={'bg-pink-600'}
-            // icon={faStar}
+            iconBgColor={'#EF4444'}
+            icon={faTrash}
             last={true}
-            onPress={clearData}
+            onPress={twoButtonAlert}
           />
         </SettingsLinkGroup>
       </Container>

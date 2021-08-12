@@ -14,7 +14,7 @@ function ANewDay(index) {
 }
 
 // todo: probably needs to be better
-const generateInitialDays = (count = 1) => {
+const generateInitialDays = (count = 30) => {
   const initialDays = [];
   for (let index = 1; index <= count; index++) {
     initialDays.push(ANewDay(index));
@@ -30,7 +30,7 @@ export const fetchDaysFromDB = async () => {
 const DaysContext = createContext(null);
 
 export const DaysProvider = (props) => {
-  const [days, setDays] = useState([]);
+  const [days, setDays] = useState({ fromCache: false, data: [] });
 
   const saveAndSetDays = async (updatedDays) => {
     await AsyncStorage.setItem(STORAGE_KEY_DAYS, JSON.stringify(updatedDays));
@@ -57,6 +57,10 @@ export const DaysProvider = (props) => {
     days = generateInitialDays();
     fromCache = false;
     setDays({ fromCache, data: days });
+  };
+
+  const exportDaysData = async () => {
+    console.log('exporting days data');
   };
 
   const addEmptyDay = async () => {
@@ -92,7 +96,9 @@ export const DaysProvider = (props) => {
   }, [days]);
 
   return (
-    <DaysContext.Provider value={{ days, resetDays, updateDay }}>
+    <DaysContext.Provider
+      value={{ days, resetDays, updateDay, exportDaysData }}
+    >
       {props.children}
     </DaysContext.Provider>
   );
