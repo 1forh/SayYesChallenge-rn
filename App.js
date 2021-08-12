@@ -57,7 +57,7 @@ export default function App() {
         <WalkThroughProvider>
           <DaysProvider>
             <WrapperNav />
-            <StatusBar style='inverted' />
+            <StatusBar />
           </DaysProvider>
         </WalkThroughProvider>
       </View>

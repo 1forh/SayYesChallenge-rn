@@ -13,13 +13,15 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "userInterfaceStyle": "dark",
+      "backgroundColor": "#1C2125",
+      "bundleIdentifier": "com.skycatchfire.ThirtyDaysOfNew"
     },
     "android": {
+      "package": "com.skycatchfire.ThirtyDaysOfNew",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

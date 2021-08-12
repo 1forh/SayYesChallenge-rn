@@ -11,7 +11,7 @@ import Container from '@components/Container';
 import PageWrapper from '@components/PageWrapper';
 import PageHeader from '@components/PageHeader';
 import { useDays } from '@hooks/useDays';
-import Carousel from 'react-native-snap-carousel';
+// import Carousel from 'react-native-snap-carousel';
 
 export default function Days({ navigation }) {
   const { days, updateDay } = useDays();
@@ -33,16 +33,16 @@ export default function Days({ navigation }) {
           title='Days'
           goToSettings={() => navigation.navigate('Settings')}
         />
-        <View style={{ flex: 1 }}>
-          <Carousel
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+          {/* <Carousel
             data={days?.data}
             renderItem={renderItem}
             sliderHeight={310}
             itemHeight={310}
             vertical={true}
             enableMomentum={true}
-          />
-          {/* {typeof days?.data === 'object' &&
+          /> */}
+          {typeof days?.data === 'object' &&
             days?.data.map((day, index) => (
               <View key={index} style={{ marginBottom: 12 }}>
                 <DayCard
@@ -51,12 +51,12 @@ export default function Days({ navigation }) {
                   goToSuggestions={() => navigation.navigate('Suggestions')}
                 />
               </View>
-            ))} */}
+            ))}
 
           {/* <View>
             <Text>Day started: Placeholder</Text>
           </View> */}
-        </View>
+        </ScrollView>
       </Container>
     </PageWrapper>
   );
