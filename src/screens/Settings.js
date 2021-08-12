@@ -6,6 +6,7 @@ import PageWrapper from '@components/PageWrapper';
 import SettingsLinkGroup from '@components/SettingsLinkGroup';
 import SettingsLink from '@components/SettingsLink';
 import { useDays } from '@hooks/useDays';
+import { useWalkThrough } from '@hooks/useWalkThrough';
 import { config } from '@utils/config';
 import {
   faStar,
@@ -13,12 +14,12 @@ import {
   faDownload,
   faCalendar,
 } from '@fortawesome/free-solid-svg-icons';
-import { gray } from '@utils/colors';
 
 import * as Linking from 'expo-linking';
 
 export default function Settings({ navigation }) {
   const { resetDays, exportDaysData } = useDays();
+  const { clearWalkThroughData } = useWalkThrough();
 
   const twoButtonAlert = () =>
     Alert.alert(
@@ -27,10 +28,9 @@ export default function Settings({ navigation }) {
       [
         {
           text: 'Cancel',
-          onPress: () => clearData(),
           style: 'cancel',
         },
-        { text: 'OK', onPress: () => console.log('OK Pressed') },
+        { text: 'OK', onPress: () => clearData() },
       ],
       { cancelable: false }
     );
@@ -51,6 +51,7 @@ export default function Settings({ navigation }) {
 
   const clearData = () => {
     resetDays();
+    clearWalkThroughData();
     console.log('clearData');
   };
 

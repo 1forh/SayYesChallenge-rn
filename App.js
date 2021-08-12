@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import WrapperNav from '@navigation/WrapperNav';
 import { DaysProvider } from '@hooks/useDays';
+import { WalkThroughProvider } from '@hooks/useWalkThrough';
 import {
   useFonts,
   // Poppins_100Thin,
@@ -53,10 +54,12 @@ export default function App() {
   } else {
     return (
       <View style={{ flexGrow: 1 }}>
-        <DaysProvider>
-          <WrapperNav />
-          <StatusBar style='inverted' />
-        </DaysProvider>
+        <WalkThroughProvider>
+          <DaysProvider>
+            <WrapperNav />
+            <StatusBar style='inverted' />
+          </DaysProvider>
+        </WalkThroughProvider>
       </View>
     );
   }
