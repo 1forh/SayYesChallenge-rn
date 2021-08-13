@@ -30,8 +30,6 @@ export default function WalkThrough({ navigation }) {
         <PageHeader title={config.name} />
 
         <ScrollView style={styles.scrollWrapper}>
-          <Heading>The Challenge</Heading>
-
           <Paragraph>
             Each day for 30 days do something you’ve never done before. Can be
             simple, can be complex.
@@ -55,6 +53,8 @@ export default function WalkThrough({ navigation }) {
             You’ll also hopefully start a new habit of opening up, getting out
             of your comfort zone, and trying new things in your life.
           </Paragraph>
+
+          <Paragraph>Have a great time!</Paragraph>
 
           <View style={styles.linkWrapper}>
             <TouchableOpacity

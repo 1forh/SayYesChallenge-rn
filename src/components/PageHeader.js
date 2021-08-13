@@ -42,7 +42,7 @@ export default function PageHeader({ goToSettings, goBack, title }) {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginBottom: 24,
+    marginBottom: 16,
     justifyContent: 'space-between',
     flexDirection: 'row',
   },

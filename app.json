@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ThirtyDaysOfNew",
-    "slug": "ThirtyDaysOfNew",
+    "name": "SayYesChallenge",
+    "slug": "SayYesChallenge",
     "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,10 +18,10 @@
       "supportsTablet": false,
       "userInterfaceStyle": "dark",
       "backgroundColor": "#1C2125",
-      "bundleIdentifier": "com.skycatchfire.ThirtyDaysOfNew"
+      "bundleIdentifier": "com.skycatchfire.SayYesChallenge"
     },
     "android": {
-      "package": "com.skycatchfire.ThirtyDaysOfNew",
+      "package": "com.skycatchfire.SayYesChallenge",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

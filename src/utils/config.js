@@ -1,4 +1,4 @@
 export const config = {
-  name: '30 Days of New',
+  name: 'Say Yes Challenge',
   defaultNumberOfDays: 30,
 };
