@@ -42,8 +42,8 @@ export default function Splash({ navigation }) {
         <Animated.View style={[{ opacity: fadeAnim }, styles.animatedWrapper]}>
           <View style={styles.textWrapper}>
             <Paragraph>
-              Each day for 30 days do something you’ve never done before. Can be
-              simple, can be complex.
+              Each day for 30 days do something you’ve never done before. What
+              you do can be simple or complex.
             </Paragraph>
 
             <Paragraph>
@@ -56,8 +56,8 @@ export default function Splash({ navigation }) {
             </Paragraph>
 
             <Paragraph>
-              After 30 days of getting out of your comfort zone, trying new
-              things in the future will be easier! Have fun!
+              After 30 days of getting out of your comfort zone, it will be
+              easier to say yes to new things.
             </Paragraph>
 
             <Paragraph>Have fun!</Paragraph>
