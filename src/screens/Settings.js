@@ -63,18 +63,17 @@ export default function Settings({ navigation }) {
     <PageWrapper>
       <Container>
         <PageHeader title='Settings' goBack={() => navigation.goBack()} />
-
-        {/* <SettingsLinkGroup>
+        {/* 
+        <SettingsLinkGroup>
           <SettingsLink
             text={'Number of days'}
-            iconGradient={'#71717A'}
+            iconGradient={['#EC4899', '#BE185D']}
             icon={faCalendar}
             last={true}
-            onPress={resetDays}
           />
         </SettingsLinkGroup> */}
 
-        <SettingsLinkGroup>
+        {/* <SettingsLinkGroup>
           <SettingsLink
             text={`Rate ${config.name}`}
             iconGradient={['#EC4899', '#BE185D']}
@@ -82,7 +81,7 @@ export default function Settings({ navigation }) {
             last={true}
             onPress={requestReview}
           />
-        </SettingsLinkGroup>
+        </SettingsLinkGroup> */}
 
         <SettingsLinkGroup>
           {/* <SettingsLink
