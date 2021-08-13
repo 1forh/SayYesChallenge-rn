@@ -52,7 +52,7 @@ export default function Settings({ navigation }) {
   const clearData = () => {
     resetDays();
     clearWalkThroughData();
-    console.log('clearData');
+    navigation.navigate('Splash');
   };
 
   const exportData = () => {

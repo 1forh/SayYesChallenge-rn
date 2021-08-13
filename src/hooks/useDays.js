@@ -52,16 +52,15 @@ export const DaysProvider = (props) => {
         fromCache = false;
       }
 
-      console.log('fetched!', { fromCache }),
-        setDays({ fromCache, data: initialDays });
+      console.log('fetched!', { fromCache });
+      setDays({ fromCache, data: initialDays });
     })();
   };
 
   const resetDays = async () => {
     await AsyncStorage.removeItem(STORAGE_KEY);
-    days = generateInitialDays();
-    fromCache = false;
-    setDays({ fromCache, data: days });
+    const resetDays = { fromCache: false, data: generateInitialDays() };
+    setDays(resetDays);
   };
 
   const exportDaysData = async () => {
