@@ -14,7 +14,6 @@ import {
   faDownload,
   faCalendar,
 } from '@fortawesome/free-solid-svg-icons';
-
 import * as Linking from 'expo-linking';
 
 export default function Settings({ navigation }) {

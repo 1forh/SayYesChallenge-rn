@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { LinearGradient } from 'expo-linear-gradient';
 import { gray } from '@utils/colors';
 
 export default function Button({ icon, children, onPress }) {
@@ -10,13 +11,19 @@ export default function Button({ icon, children, onPress }) {
       onPress={onPress}
       activeOpacity={0.75}
     >
-      <Text style={styles.buttonText}>{children}</Text>
-      <FontAwesomeIcon
-        style={styles.buttonIcon}
-        icon={icon}
-        color={gray[800]}
-        size={18}
+      <LinearGradient
+        colors={['#FACD63', '#FC6C15']}
+        style={styles.imageGradient}
       />
+      <View style={styles.textWrapper}>
+        <Text style={styles.buttonText}>{children}</Text>
+        <FontAwesomeIcon
+          style={styles.buttonIcon}
+          icon={icon}
+          color={'#fff'}
+          size={18}
+        />
+      </View>
     </TouchableOpacity>
   );
 }
@@ -29,13 +36,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     paddingVertical: 16,
     borderRadius: 40,
+    overflow: 'hidden',
+  },
+  textWrapper: {
+    position: 'relative',
+    zIndex: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   buttonText: {
     fontSize: 17,
     fontWeight: '600',
-    color: gray[800],
+    color: '#fff',
   },
   buttonIcon: {
     marginLeft: 8,
+  },
+  imageGradient: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    zIndex: 1,
   },
 });

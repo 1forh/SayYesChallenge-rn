@@ -10,6 +10,7 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
+import * as Haptics from 'expo-haptics';
 
 export default function PhotoPicker({ pick, photo }) {
   const [image, setImage] = useState(photo);
@@ -27,6 +28,8 @@ export default function PhotoPicker({ pick, photo }) {
   }, []);
 
   const pickImage = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
