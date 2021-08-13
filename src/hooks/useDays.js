@@ -52,7 +52,8 @@ export const DaysProvider = (props) => {
         fromCache = false;
       }
 
-      setDays({ fromCache, data: initialDays });
+      console.log('fetched!', { fromCache }),
+        setDays({ fromCache, data: initialDays });
     })();
   };
 

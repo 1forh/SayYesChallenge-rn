@@ -12,8 +12,9 @@ export default function DayCard({ goToSuggestions, updateDay, day }) {
   useEffect(() => {
     if (!image) return;
 
-    console.log('updating day');
-    updateDay({ ...day, image });
+    if (image !== day?.image) {
+      updateDay({ ...day, image });
+    }
   }, [image]);
 
   return (
@@ -22,7 +23,6 @@ export default function DayCard({ goToSuggestions, updateDay, day }) {
       {image ? (
         <View style={styles.imageWrapper}>
           <LinearGradient
-            // Background Linear Gradient
             colors={['rgba(0,0,0,0.8)', 'transparent']}
             style={styles.imageGradient}
           />

@@ -14,6 +14,6 @@ const styles = StyleSheet.create({
   wrapper: {
     marginBottom: 16,
     backgroundColor: black,
-    borderRadius: 6,
+    borderRadius: 10,
   },
 });
