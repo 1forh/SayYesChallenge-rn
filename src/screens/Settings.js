@@ -67,7 +67,7 @@ export default function Settings({ navigation }) {
         {/* <SettingsLinkGroup>
           <SettingsLink
             text={'Number of days'}
-            iconBgColor={'#71717A'}
+            iconGradient={'#71717A'}
             icon={faCalendar}
             last={true}
             onPress={resetDays}
@@ -77,7 +77,7 @@ export default function Settings({ navigation }) {
         <SettingsLinkGroup>
           <SettingsLink
             text={`Rate ${config.name}`}
-            iconBgColor={'#EC4899'}
+            iconGradient={['#EC4899', '#BE185D']}
             icon={faStar}
             last={true}
             onPress={requestReview}
@@ -87,13 +87,13 @@ export default function Settings({ navigation }) {
         <SettingsLinkGroup>
           {/* <SettingsLink
             text={'Export data'}
-            iconBgColor={'#9333EA'}
+            iconGradient={'#9333EA'}
             icon={faDownload}
             onPress={exportData}
           /> */}
           <SettingsLink
             text={'Clear data'}
-            iconBgColor={'#EF4444'}
+            iconGradient={['#EF4444', '#B91C1C']}
             icon={faTrash}
             last={true}
             onPress={twoButtonAlert}

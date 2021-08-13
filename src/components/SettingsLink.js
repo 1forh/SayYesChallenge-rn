@@ -3,13 +3,14 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { black, gray } from '@utils/colors';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function SettingsLink({
   last = false,
   onPress,
   icon,
   text,
-  iconBgColor = black,
+  iconGradient = ['#FACD63', '#FC6C15'],
 }) {
   return (
     <TouchableOpacity
@@ -18,8 +19,16 @@ export default function SettingsLink({
       style={styles.wrapper}
     >
       <View style={styles.innerWrapper}>
-        <View style={[styles.iconBg, { backgroundColor: iconBgColor }]}>
-          {icon && <FontAwesomeIcon icon={icon} color='#fff' size={18} />}
+        <View style={[styles.iconBg]}>
+          <LinearGradient colors={iconGradient} style={styles.gradient} />
+          {icon && (
+            <FontAwesomeIcon
+              style={styles.icon}
+              icon={icon}
+              color='#fff'
+              size={18}
+            />
+          )}
         </View>
 
         <View
@@ -40,6 +49,7 @@ export default function SettingsLink({
 
 const styles = StyleSheet.create({
   wrapper: {
+    position: 'relative',
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
@@ -51,14 +61,18 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   iconBg: {
+    position: 'relative',
+    zIndex: 1,
     marginRight: 16,
     padding: 6,
     borderRadius: 6,
+    overflow: 'hidden',
+  },
+  icon: {
+    position: 'relative',
+    zIndex: 2,
   },
   textWrapper: {
-    // tailwind(
-    //           'flex-row items-center justify-between flex-1 border-gray-700 py-3'
-    //         ),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -73,5 +87,13 @@ const styles = StyleSheet.create({
   },
   textIconWrapper: {
     marginRight: 8,
+  },
+  gradient: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    zIndex: 1,
   },
 });
