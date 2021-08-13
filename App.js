@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppLoading from 'expo-app-loading';
 import { View, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { Asset } from 'expo-asset';
 import WrapperNav from '@navigation/WrapperNav';
 import { DaysProvider } from '@hooks/useDays';
 import { WalkThroughProvider } from '@hooks/useWalkThrough';
@@ -49,18 +50,35 @@ export default function App() {
     // Poppins_900Black_Italic,
   });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
+  const [appIsReady, setAppIsReady] = useState(false);
+
+  const stallSplashScreen = () => {
+    const images = [require('./assets/splash.png')];
+
+    const cacheImages = images.map((image) => {
+      return Asset.fromModule(image).downloadAsync();
+    });
+    return Promise.all(cacheImages);
+  };
+
+  if (!appIsReady || !fontsLoaded) {
     return (
-      <View style={{ flexGrow: 1 }}>
-        <WalkThroughProvider>
-          <DaysProvider>
-            <WrapperNav />
-            <StatusBar />
-          </DaysProvider>
-        </WalkThroughProvider>
-      </View>
+      <AppLoading
+        startAsync={stallSplashScreen}
+        onFinish={() => setAppIsReady(true)}
+        onError={console.warn}
+      />
     );
   }
+
+  return (
+    <View style={{ flexGrow: 1 }}>
+      <WalkThroughProvider>
+        <DaysProvider>
+          <WrapperNav />
+          <StatusBar />
+        </DaysProvider>
+      </WalkThroughProvider>
+    </View>
+  );
 }

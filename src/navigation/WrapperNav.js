@@ -2,8 +2,7 @@ import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View } from 'react-native';
-// import TabNav from '@navigation/TabNav';
-import WalkThrough from '@screens/WalkThrough';
+import Splash from '@screens/Splash';
 import Days from '@screens/Days';
 import Suggestions from '@screens/Suggestions';
 import Settings from '@screens/Settings';
@@ -33,12 +32,12 @@ export default function WrapperNav() {
     return (
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator
-          initialRouteName={seenWalkThrough ? 'Days' : 'WalkThrough'}
+          initialRouteName={seenWalkThrough ? 'Days' : 'Splash'}
           screenOptions={{
             headerShown: false,
           }}
         >
-          <Stack.Screen name='WalkThrough' component={WalkThrough} />
+          <Stack.Screen name='Splash' component={Splash} />
           <Stack.Screen name='Days' component={Days} />
           <Stack.Screen name='Suggestions' component={Suggestions} />
           <Stack.Screen name='Settings' component={Settings} />
