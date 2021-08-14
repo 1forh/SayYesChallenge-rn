@@ -6,6 +6,7 @@ import Splash from '@screens/Splash';
 import Days from '@screens/Days';
 import Suggestions from '@screens/Suggestions';
 import Settings from '@screens/Settings';
+import About from '@screens/About';
 import { gray } from '@utils/colors';
 import { useWalkThrough } from '@hooks/useWalkThrough';
 
@@ -41,6 +42,7 @@ export default function WrapperNav() {
           <Stack.Screen name='Days' component={Days} />
           <Stack.Screen name='Suggestions' component={Suggestions} />
           <Stack.Screen name='Settings' component={Settings} />
+          <Stack.Screen name='About' component={About} />
         </Stack.Navigator>
       </NavigationContainer>
     );

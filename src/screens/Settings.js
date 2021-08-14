@@ -13,6 +13,8 @@ import {
   faTrash,
   faDownload,
   faCalendar,
+  faInfoCircle,
+  faPepperHot,
 } from '@fortawesome/free-solid-svg-icons';
 import * as Linking from 'expo-linking';
 
@@ -64,25 +66,27 @@ export default function Settings({ navigation }) {
       <PageHeader title='Settings' goBack={() => navigation.goBack()} />
 
       <Container>
-        {/* 
         <SettingsLinkGroup>
           <SettingsLink
-            text={'Number of days'}
-            iconGradient={['#EC4899', '#BE185D']}
-            icon={faCalendar}
-            last={true}
+            text={`About`}
+            iconGradient={['#14B8A6', '#0F766E']}
+            icon={faInfoCircle}
+            onPress={() => navigation.navigate('About')}
           />
-        </SettingsLinkGroup> */}
-
-        {/* <SettingsLinkGroup>
+          <SettingsLink
+            text={`Suggestions`}
+            iconGradient={['#F97316', '#C2410C']}
+            icon={faPepperHot}
+            onPress={() => navigation.navigate('Suggestions')}
+          />
           <SettingsLink
             text={`Rate ${config.name}`}
-            iconGradient={['#EC4899', '#BE185D']}
+            iconGradient={['#8B5CF6', '#6B21A8']}
             icon={faStar}
             last={true}
             onPress={requestReview}
           />
-        </SettingsLinkGroup> */}
+        </SettingsLinkGroup>
 
         <SettingsLinkGroup>
           {/* <SettingsLink
