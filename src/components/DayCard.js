@@ -23,13 +23,24 @@ export default function DayCard({ goToSuggestions, updateDay, day }) {
       <View style={styles.inner}>
         <DayCardHeader day={day?.index} date={day?.date} />
         {image ? (
-          <View style={styles.imageWrapper}>
-            <LinearGradient
-              colors={['rgba(0,0,0,0.8)', 'transparent']}
-              style={styles.imageGradient}
-            />
-            <Image source={{ uri: image }} style={styles.image} />
-          </View>
+          <>
+            <View style={styles.imageWrapper}>
+              <LinearGradient
+                colors={['rgba(0,0,0,0.8)', 'transparent']}
+                style={styles.imageGradient}
+              />
+              <Image source={{ uri: image }} style={styles.image} />
+            </View>
+            <View style={styles.bottomActions}>
+              <View></View>
+              <PhotoPicker
+                pick={setImage}
+                photo={image}
+                showText={false}
+                iconSize={28}
+              />
+            </View>
+          </>
         ) : (
           <View style={styles.content}>
             <PhotoPicker pick={setImage} photo={image} />
@@ -94,5 +105,14 @@ const styles = StyleSheet.create({
     top: 0,
     height: '50%',
     zIndex: 1,
+  },
+  bottomActions: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
 });

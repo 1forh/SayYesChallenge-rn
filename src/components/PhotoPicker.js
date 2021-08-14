@@ -12,7 +12,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import * as Haptics from 'expo-haptics';
 
-export default function PhotoPicker({ pick, photo }) {
+export default function PhotoPicker({
+  pick,
+  photo,
+  showText = true,
+  iconSize = 52,
+}) {
   const [image, setImage] = useState(photo);
 
   useEffect(() => {
@@ -45,9 +50,13 @@ export default function PhotoPicker({ pick, photo }) {
 
   return (
     <View style={styles.wrapper}>
-      <TouchableOpacity style={styles.button} onPress={pickImage}>
-        <FontAwesomeIcon icon={faImage} color='#fff' size={52} />
-        <Text style={styles.buttonText}>Upload photo</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={pickImage}
+        activeOpacity={0.75}
+      >
+        <FontAwesomeIcon icon={faImage} color='#fff' size={iconSize} />
+        {showText && <Text style={styles.buttonText}>Upload photo</Text>}
       </TouchableOpacity>
     </View>
   );

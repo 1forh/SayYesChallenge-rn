@@ -78,7 +78,9 @@ export const DaysProvider = (props) => {
   const updateDay = async (day) => {
     const updatedDays = days?.data.map((d) => {
       if (d.index === day.index) {
-        day.date = new Date();
+        if (!day.date) {
+          day.date = new Date();
+        }
         return day;
       }
       return d;
