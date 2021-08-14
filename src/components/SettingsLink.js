@@ -83,7 +83,9 @@ const styles = StyleSheet.create({
   text: {
     // tailwind('text-white text-lg')
     color: '#fff',
-    fontSize: 18,
+    fontSize: 17,
+    fontWeight: '500',
+    fontFamily: 'Poppins_500Medium',
   },
   textIconWrapper: {
     marginRight: 8,
