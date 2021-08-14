@@ -10,16 +10,16 @@ import Heading from '@components/Heading';
 export default function Suggestions({ navigation }) {
   return (
     <PageWrapper>
-      <Container>
-        <PageHeader
-          title='Need a suggestion?'
-          goBack={() => navigation.goBack()}
-        />
+      <PageHeader
+        title='Need a suggestion?'
+        goBack={() => navigation.goBack()}
+      />
 
-        <ScrollView
-          style={styles.scrollWrapper}
-          showsVerticalScrollIndicator={false}
-        >
+      <ScrollView
+        style={styles.scrollWrapper}
+        showsVerticalScrollIndicator={false}
+      >
+        <Container>
           <View style={styles.scrollWrapperInner}>
             <Paragraph>
               Below are some examples of fun, unique things you can do to get
@@ -94,8 +94,8 @@ export default function Suggestions({ navigation }) {
               ]}
             />
           </View>
-        </ScrollView>
-      </Container>
+        </Container>
+      </ScrollView>
     </PageWrapper>
   );
 }

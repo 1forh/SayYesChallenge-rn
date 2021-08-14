@@ -61,8 +61,9 @@ export default function Settings({ navigation }) {
 
   return (
     <PageWrapper>
+      <PageHeader title='Settings' goBack={() => navigation.goBack()} />
+
       <Container>
-        <PageHeader title='Settings' goBack={() => navigation.goBack()} />
         {/* 
         <SettingsLinkGroup>
           <SettingsLink

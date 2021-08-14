@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCog, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import Container from '@components/Container';
 
 export default function PageHeader({ goToSettings, goBack, title }) {
   const GoBackButton = () => {
@@ -30,12 +31,14 @@ export default function PageHeader({ goToSettings, goBack, title }) {
 
   return (
     <View style={styles.wrapper}>
-      <View style={styles.titleWrapper}>
-        {typeof goBack === 'function' && <GoBackButton />}
-        <Text style={styles.title}>{title}</Text>
-      </View>
+      <Container style={styles.inner}>
+        <View style={styles.titleWrapper}>
+          {typeof goBack === 'function' && <GoBackButton />}
+          <Text style={styles.title}>{title}</Text>
+        </View>
 
-      {typeof goToSettings === 'function' && <GoToSettingsButton />}
+        {typeof goToSettings === 'function' && <GoToSettingsButton />}
+      </Container>
     </View>
   );
 }
@@ -43,6 +46,10 @@ export default function PageHeader({ goToSettings, goBack, title }) {
 const styles = StyleSheet.create({
   wrapper: {
     marginBottom: 16,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  inner: {
     justifyContent: 'space-between',
     flexDirection: 'row',
   },

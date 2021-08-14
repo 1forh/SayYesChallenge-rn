@@ -12,7 +12,7 @@ export default function PageWrapper({ children }) {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 16,
+    marginTop: 0,
     flex: 1,
   },
 });

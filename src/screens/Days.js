@@ -28,12 +28,12 @@ export default function Days({ navigation }) {
 
   return (
     <PageWrapper>
-      <Container>
-        <PageHeader
-          title='Days'
-          goToSettings={() => navigation.navigate('Settings')}
-        />
-        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+      <PageHeader
+        title='Days'
+        goToSettings={() => navigation.navigate('Settings')}
+      />
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+        <Container style={{ flex: 1 }}>
           {/* <Carousel
             data={days?.data}
             renderItem={renderItem}
@@ -56,8 +56,8 @@ export default function Days({ navigation }) {
           {/* <View>
             <Text>Day started: Placeholder</Text>
           </View> */}
-        </ScrollView>
-      </Container>
+        </Container>
+      </ScrollView>
     </PageWrapper>
   );
 }
