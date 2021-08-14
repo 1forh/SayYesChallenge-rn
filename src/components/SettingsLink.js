@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     borderColor: gray[800],
   },
   text: {
-    // tailwind('text-white text-lg')
     color: '#fff',
     fontSize: 17,
     fontWeight: '500',
