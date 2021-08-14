@@ -24,7 +24,7 @@ export default function PageHeader({ goToSettings, goBack, title }) {
         onPress={goToSettings}
         activeOpacity={0.75}
       >
-        <FontAwesomeIcon icon={faCog} color='#fff' size={20} />
+        <FontAwesomeIcon icon={faCog} color='#fff' size={24} />
       </TouchableOpacity>
     );
   };
