@@ -2,7 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { LinearGradient } from 'expo-linear-gradient';
-import { gray } from '@utils/colors';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+
+export const GoToSettingsButton = ({ navigation }) => {
+  return (
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Settings')}
+      activeOpacity={0.75}
+    >
+      <FontAwesomeIcon icon={faCog} color='#fff' size={24} />
+    </TouchableOpacity>
+  );
+};
 
 export default function Button({ icon, children, onPress }) {
   return (

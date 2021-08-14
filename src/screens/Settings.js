@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, Alert } from 'react-native';
+import React from 'react';
+import { ScrollView, Alert } from 'react-native';
 import Container from '@components/Container';
-import PageHeader from '@components/PageHeader';
 import PageWrapper from '@components/PageWrapper';
 import SettingsLinkGroup from '@components/SettingsLinkGroup';
 import SettingsLink from '@components/SettingsLink';
@@ -63,47 +62,41 @@ export default function Settings({ navigation }) {
 
   return (
     <PageWrapper>
-      <PageHeader title='Settings' goBack={() => navigation.goBack()} />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Container>
+          <SettingsLinkGroup>
+            <SettingsLink
+              text={`About`}
+              iconGradient={['#14B8A6', '#0F766E']}
+              icon={faInfoCircle}
+              onPress={() => navigation.navigate('About')}
+            />
+            <SettingsLink
+              text={`Suggestions`}
+              iconGradient={['#F97316', '#C2410C']}
+              icon={faPepperHot}
+              onPress={() => navigation.navigate('Suggestions')}
+            />
+            <SettingsLink
+              text={`Rate ${config.name}`}
+              iconGradient={['#8B5CF6', '#6B21A8']}
+              icon={faStar}
+              last={true}
+              onPress={requestReview}
+            />
+          </SettingsLinkGroup>
 
-      <Container>
-        <SettingsLinkGroup>
-          <SettingsLink
-            text={`About`}
-            iconGradient={['#14B8A6', '#0F766E']}
-            icon={faInfoCircle}
-            onPress={() => navigation.navigate('About')}
-          />
-          <SettingsLink
-            text={`Suggestions`}
-            iconGradient={['#F97316', '#C2410C']}
-            icon={faPepperHot}
-            onPress={() => navigation.navigate('Suggestions')}
-          />
-          <SettingsLink
-            text={`Rate ${config.name}`}
-            iconGradient={['#8B5CF6', '#6B21A8']}
-            icon={faStar}
-            last={true}
-            onPress={requestReview}
-          />
-        </SettingsLinkGroup>
-
-        <SettingsLinkGroup>
-          {/* <SettingsLink
-            text={'Export data'}
-            iconGradient={'#9333EA'}
-            icon={faDownload}
-            onPress={exportData}
-          /> */}
-          <SettingsLink
-            text={'Clear data'}
-            iconGradient={['#EF4444', '#B91C1C']}
-            icon={faTrash}
-            last={true}
-            onPress={twoButtonAlert}
-          />
-        </SettingsLinkGroup>
-      </Container>
+          <SettingsLinkGroup>
+            <SettingsLink
+              text={'Clear data'}
+              iconGradient={['#EF4444', '#B91C1C']}
+              icon={faTrash}
+              last={true}
+              onPress={twoButtonAlert}
+            />
+          </SettingsLinkGroup>
+        </Container>
+      </ScrollView>
     </PageWrapper>
   );
 }

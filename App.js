@@ -6,6 +6,7 @@ import { Asset } from 'expo-asset';
 import WrapperNav from '@navigation/WrapperNav';
 import { DaysProvider } from '@hooks/useDays';
 import { WalkThroughProvider } from '@hooks/useWalkThrough';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
   useFonts,
   // Poppins_100Thin,
@@ -73,12 +74,14 @@ export default function App() {
 
   return (
     <View style={{ flexGrow: 1 }}>
-      <WalkThroughProvider>
-        <DaysProvider>
-          <WrapperNav />
-          <StatusBar />
-        </DaysProvider>
-      </WalkThroughProvider>
+      <SafeAreaProvider>
+        <WalkThroughProvider>
+          <DaysProvider>
+            <WrapperNav />
+            <StatusBar animated />
+          </DaysProvider>
+        </WalkThroughProvider>
+      </SafeAreaProvider>
     </View>
   );
 }

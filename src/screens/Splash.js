@@ -16,7 +16,7 @@ export default function Splash({ navigation }) {
   const { saveSeenWalkThrough } = useWalkThrough();
 
   const takeChallenge = () => {
-    navigation.navigate('Days');
+    navigation.navigate('ChallengeStack');
     saveSeenWalkThrough(true);
   };
 
