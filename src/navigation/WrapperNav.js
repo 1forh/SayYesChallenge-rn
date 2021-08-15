@@ -13,10 +13,14 @@ import { GoToSettingsButton } from '@components/Button';
 import { darkTheme, defaultTheme } from '@utils/styleguide';
 import { useColorScheme } from 'react-native-appearance';
 import { useColorTheme } from '@hooks/useColorTheme';
+import { useTheme } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
 const ChallengeStack = () => {
+  const { activeTheme } = useColorTheme();
+  const { colors } = useTheme();
+
   return (
     <Stack.Navigator
       initialRouteName={'Days'}
@@ -24,12 +28,12 @@ const ChallengeStack = () => {
         headerShown: true,
         headerTransparent: true,
         headerTitleStyle: {
-          color: '#fff',
+          color: colors.text,
         },
         headerLargeTitleStyle: {
-          color: '#fff',
+          color: colors.text,
         },
-        headerBlurEffect: 'dark',
+        headerBlurEffect: activeTheme,
         headerRight: () => {
           if (route.name === 'Days') {
             return <GoToSettingsButton navigation={navigation} />;

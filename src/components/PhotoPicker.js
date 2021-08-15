@@ -11,6 +11,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import * as Haptics from 'expo-haptics';
+import { useTheme } from '@react-navigation/native';
 
 export default function PhotoPicker({
   pick,
@@ -19,6 +20,7 @@ export default function PhotoPicker({
   iconSize = 52,
 }) {
   const [image, setImage] = useState(photo);
+  const { colors } = useTheme();
 
   useEffect(() => {
     (async () => {
@@ -55,8 +57,12 @@ export default function PhotoPicker({
         onPress={pickImage}
         activeOpacity={0.75}
       >
-        <FontAwesomeIcon icon={faImage} color='#fff' size={iconSize} />
-        {showText && <Text style={styles.buttonText}>Upload photo</Text>}
+        <FontAwesomeIcon icon={faImage} color={colors.text} size={iconSize} />
+        {showText && (
+          <Text style={[styles.buttonText, { color: colors.text }]}>
+            Upload photo
+          </Text>
+        )}
       </TouchableOpacity>
     </View>
   );

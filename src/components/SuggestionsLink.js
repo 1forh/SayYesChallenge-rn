@@ -1,7 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 export default function SuggestionsLink({ goToSuggestions }) {
+  const { colors } = useTheme();
+
   return (
     <View>
       <TouchableOpacity
@@ -9,7 +12,9 @@ export default function SuggestionsLink({ goToSuggestions }) {
         onPress={goToSuggestions}
         activeOpacity={0.75}
       >
-        <Text style={styles.text}>Need a suggestion?</Text>
+        <Text style={[styles.text, { color: colors.text }]}>
+          Need a suggestion?
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -20,7 +25,6 @@ const styles = StyleSheet.create({
     marginTop: 32,
   },
   text: {
-    color: '#fff',
     fontSize: 17,
     fontFamily: 'Poppins_500Medium',
   },

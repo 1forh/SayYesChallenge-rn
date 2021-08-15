@@ -6,12 +6,14 @@ import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from '@react-navigation/native';
 
 export const GoToSettingsButton = ({ navigation }) => {
+  const { colors } = useTheme();
+
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('Settings')}
       activeOpacity={0.75}
     >
-      <FontAwesomeIcon icon={faCog} color='#fff' size={24} />
+      <FontAwesomeIcon icon={faCog} color={colors.text} size={24} />
     </TouchableOpacity>
   );
 };

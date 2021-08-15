@@ -40,9 +40,13 @@ export default function SettingsLink({
             last ? { borderBottomWidth: 0 } : { borderBottomWidth: 1 },
           ]}
         >
-          <Text style={styles.text}>{text}</Text>
+          <Text style={[styles.text, { color: colors.text }]}>{text}</Text>
           <View style={styles.textIconWrapper}>
-            <FontAwesomeIcon icon={faChevronRight} color='#fff' size={18} />
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              color={colors.text}
+              size={18}
+            />
           </View>
         </View>
       </View>
@@ -84,7 +88,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: '500',
     fontFamily: 'Poppins_500Medium',
   },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { format } from 'date-fns';
+import { useTheme } from '@react-navigation/native';
 
 function formatDate(d) {
   if (!d) return;
@@ -8,12 +9,14 @@ function formatDate(d) {
 }
 
 export default function DayCardHeader({ day, date }) {
+  const { colors } = useTheme();
+
   const formattedDate = formatDate(date);
 
   return (
     <View style={styles.wrapper}>
-      <Text style={styles.text}>Day {day}</Text>
-      <Text style={styles.text}>{formattedDate}</Text>
+      <Text style={[styles.text, { color: colors.text }]}>Day {day}</Text>
+      <Text style={[styles.text, { color: colors.text }]}>{formattedDate}</Text>
     </View>
   );
 }
@@ -25,7 +28,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: '#fff',
     fontFamily: 'Poppins_400Regular',
   },
 });

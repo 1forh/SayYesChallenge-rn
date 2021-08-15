@@ -25,7 +25,7 @@ export const defaultTheme = {
   dark: false,
   colors: {
     background: colors.white,
-    backgroundSecondary: colors.gray[800],
+    backgroundSecondary: '#F3F4F6',
     backgroundTertiary: colors.gray[800],
     shadow: colors.gray[800],
     border: 'rgb(224, 224, 224)',

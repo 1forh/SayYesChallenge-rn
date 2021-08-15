@@ -16,7 +16,9 @@ export const SettingsOptionButton = ({ children, onPress, active }) => {
       <Text style={[styles.buttonText, { color: colors.text }]}>
         {children}
       </Text>
-      {active && <FontAwesomeIcon icon={faCheck} color='#fff' size={17} />}
+      {active && (
+        <FontAwesomeIcon icon={faCheck} color={colors.text} size={17} />
+      )}
     </TouchableOpacity>
   );
 };
