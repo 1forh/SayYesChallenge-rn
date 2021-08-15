@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { LinearGradient } from 'expo-linear-gradient';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useTheme } from '@react-navigation/native';
 
 export const GoToSettingsButton = ({ navigation }) => {
   return (

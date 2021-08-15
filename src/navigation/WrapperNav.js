@@ -6,10 +6,13 @@ import Splash from '@screens/Splash';
 import Days from '@screens/Days';
 import Suggestions from '@screens/Suggestions';
 import Settings from '@screens/Settings';
+import SettingsDisplay from '@screens/SettingsDisplay';
 import About from '@screens/About';
-import { gray } from '@utils/colors';
 import { useWalkThrough } from '@hooks/useWalkThrough';
 import { GoToSettingsButton } from '@components/Button';
+import { darkTheme, defaultTheme } from '@utils/styleguide';
+import { useColorScheme } from 'react-native-appearance';
+import { useColorTheme } from '@hooks/useColorTheme';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +53,11 @@ const ChallengeStack = () => {
         }}
       />
       <Stack.Screen
+        name='SettingsDisplay'
+        component={SettingsDisplay}
+        options={{ headerTitle: 'Display' }}
+      />
+      <Stack.Screen
         name='Suggestions'
         component={Suggestions}
         options={{
@@ -69,14 +77,9 @@ const ChallengeStack = () => {
 
 export default function WrapperNav() {
   const { seenWalkThrough, fetchedWalkThroughData } = useWalkThrough();
-
-  const MyTheme = {
-    ...DefaultTheme,
-    colors: {
-      ...DefaultTheme.colors,
-      background: gray[800],
-    },
-  };
+  const { activeTheme } = useColorTheme();
+  const scheme = useColorScheme();
+  const theme = activeTheme === 'dark' ? darkTheme : defaultTheme;
 
   const forFade = ({ current }) => ({
     cardStyle: {
@@ -86,7 +89,7 @@ export default function WrapperNav() {
 
   if (fetchedWalkThroughData) {
     return (
-      <NavigationContainer theme={MyTheme}>
+      <NavigationContainer theme={theme}>
         <Stack.Navigator
           initialRouteName={seenWalkThrough ? 'ChallengeStack' : 'Splash'}
           screenOptions={{ headerShown: false }}

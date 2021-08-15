@@ -6,14 +6,20 @@ import { useHeaderHeight } from '@react-navigation/elements';
 export default function PageWrapper({
   children,
   edges = ['right', 'left'],
-  canScroll = true,
+  extraMarginTop = true,
 }) {
   const headerHeight = useHeaderHeight();
 
   return (
     <SafeAreaView style={styles.wrapper} edges={edges}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{ marginTop: headerHeight + 50 }}>{children}</View>
+        <View
+          style={{
+            marginTop: extraMarginTop ? headerHeight + 50 : headerHeight,
+          }}
+        >
+          {children}
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

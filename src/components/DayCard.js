@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import DayCardHeader from '@components/DayCardHeader';
 import PhotoPicker from '@components/PhotoPicker';
 import SuggestionsLink from '@components/SuggestionsLink';
-import { black } from '@utils/colors';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useTheme } from '@react-navigation/native';
 
 export default function DayCard({ goToSuggestions, updateDay, day }) {
   const [image, setImage] = useState(day?.image);
+  const { colors } = useTheme();
 
   useEffect(() => {
     if (!image) return;
@@ -18,8 +19,10 @@ export default function DayCard({ goToSuggestions, updateDay, day }) {
   }, [image]);
 
   return (
-    <View style={styles.wrapper}>
-      <LinearGradient colors={[black, '#060708']} style={styles.gradient} />
+    <View
+      style={[styles.wrapper, { backgroundColor: colors.backgroundSecondary }]}
+    >
+      {/* <LinearGradient colors={[black, '#060708']} style={styles.gradient} /> */}
       <View style={styles.inner}>
         <DayCardHeader day={day?.index} date={day?.date} />
         {image ? (
@@ -58,7 +61,6 @@ export default function DayCard({ goToSuggestions, updateDay, day }) {
 const styles = StyleSheet.create({
   wrapper: {
     position: 'relative',
-    backgroundColor: black,
     borderRadius: 8,
     height: 310,
     overflow: 'hidden',

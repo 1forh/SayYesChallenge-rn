@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { black, gray } from '@utils/colors';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useTheme } from '@react-navigation/native';
 
 export default function SettingsLink({
   last = false,
@@ -12,6 +12,8 @@ export default function SettingsLink({
   text,
   iconGradient = ['#FACD63', '#FC6C15'],
 }) {
+  const { colors } = useTheme();
+
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -34,6 +36,7 @@ export default function SettingsLink({
         <View
           style={[
             styles.textWrapper,
+            { borderColor: colors.background },
             last ? { borderBottomWidth: 0 } : { borderBottomWidth: 1 },
           ]}
         >
@@ -78,7 +81,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1,
     paddingVertical: 12,
-    borderColor: gray[800],
   },
   text: {
     color: '#fff',

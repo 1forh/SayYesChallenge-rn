@@ -14,6 +14,7 @@ import {
   faCalendar,
   faInfoCircle,
   faPepperHot,
+  faEye,
 } from '@fortawesome/free-solid-svg-icons';
 import * as Linking from 'expo-linking';
 
@@ -64,6 +65,15 @@ export default function Settings({ navigation }) {
     <PageWrapper>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Container>
+          <SettingsLinkGroup>
+            <SettingsLink
+              text={`Display`}
+              iconGradient={['#3B82F6', '#1E40AF']}
+              icon={faEye}
+              last={true}
+              onPress={() => navigation.navigate('SettingsDisplay')}
+            />
+          </SettingsLinkGroup>
           <SettingsLinkGroup>
             <SettingsLink
               text={`About`}
