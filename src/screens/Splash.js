@@ -11,9 +11,16 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useWalkThrough } from '@hooks/useWalkThrough';
 import Button from '@components/Button';
 import Paragraph from '@components/Paragraph';
+import { useColorTheme } from '@hooks/useColorTheme';
 
 export default function Splash({ navigation }) {
   const { saveSeenWalkThrough } = useWalkThrough();
+  const { activeTheme } = useColorTheme();
+
+  const backgroundImage =
+    activeTheme === 'dark'
+      ? require('@assets/splash.png')
+      : require('@assets/splash-light.png');
 
   const takeChallenge = () => {
     navigation.navigate('ChallengeStack');
@@ -35,10 +42,7 @@ export default function Splash({ navigation }) {
 
   return (
     <View style={styles.wrapper}>
-      <ImageBackground
-        source={require('@assets/splash.png')}
-        style={styles.image}
-      >
+      <ImageBackground source={backgroundImage} style={styles.image}>
         <Animated.View style={[{ opacity: fadeAnim }, styles.animatedWrapper]}>
           <View style={styles.textWrapper}>
             <Paragraph>
