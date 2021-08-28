@@ -15,10 +15,14 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
+      "buildNumber": "2",
       "supportsTablet": false,
       "userInterfaceStyle": "dark",
       "backgroundColor": "#1C2125",
-      "bundleIdentifier": "com.skycatchfire.SayYesChallenge"
+      "bundleIdentifier": "com.skycatchfire.SayYesChallenge",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "This app requires access to the photo library to choose a photo for each day of the challenge."
+      }
     },
     "android": {
       "package": "com.skycatchfire.SayYesChallenge",
