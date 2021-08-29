@@ -38,7 +38,7 @@ export default function Settings({ navigation }) {
 
   const requestReview = () => {
     Linking.openURL(
-      `itms-apps://itunes.apple.com/app/viewContentsUserReviews/id${1570186525}?action=write-review`
+      `itms-apps://itunes.apple.com/app/viewContentsUserReviews/id${1581043639}?action=write-review`
     );
   };
 

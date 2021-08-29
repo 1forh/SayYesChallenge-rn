@@ -2,7 +2,7 @@
   "expo": {
     "name": "SayYesChallenge",
     "slug": "SayYesChallenge",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -15,7 +15,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "2",
+      "buildNumber": "1",
       "supportsTablet": false,
       "userInterfaceStyle": "dark",
       "backgroundColor": "#1C2125",
